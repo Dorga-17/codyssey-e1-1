@@ -1,0 +1,11 @@
+services:
+  web:
+    image: codyssey-web:1.0
+    ports:
+      - "${WEB_PORT}:80"
+
+  web2:
+    image: codyssey-web:1.0
+    ports:
+      - "${WEB2_PORT}:80"
+      
