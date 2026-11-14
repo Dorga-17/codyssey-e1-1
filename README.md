@@ -364,7 +364,9 @@ docker run -d \
 **증빙 자료**
 
 - [바인드 마운트 변경 전](evidence/32.%20docker%20bind%20before.png)
+- [바인드 마운트 변경 전 HTML](evidence/98.%20bind%20html%20before.png)
 - [바인드 마운트 변경 후](evidence/33.%20docker%20bind%20after.png)
+- [바인드 마운트 변경 후 HTML](evidence/97.%20bind%20html%20after.png)
 - [마운트 설정 확인](evidence/34.%20docker%20bind%20inspect.png)
 
 ### Docker 볼륨: 컨테이너 삭제 후 데이터 유지
@@ -584,11 +586,11 @@ docker compose config
 empty compose file
 ```
 
-Compose가 해당 시점에 유효한 서비스 구성을 읽지 못했습니다. 파일 내용이 없었거나 저장되지 않았을 가능성이 있지만, 당시 파일 상태를 따로 보관하지 않아 **정확한 원인은 확정할 수 없습니다**.
+Compose가 해당 시점에 유효한 서비스 구성을 읽지 못했습니다. 파일 내용이 없었거나 저장되지 않았을 가능성 때문일 것이라고 판단하였습니다.
 
 **확인 및 조치**
 
-`compose.yaml`에 `web` 서비스 설정을 작성·저장한 후 `docker compose config`를 다시 실행했습니다. 재검증에서 `web` 서비스, `codyssey-web:1.0` 이미지, 호스트 8083번과 컨테이너 80번의 매핑 정보가 출력되었습니다.
+`compose.yaml`에 `web` 서비스 설정을 저장한 후 `docker compose config`를 다시 실행했습니다. 재검증에서 `web` 서비스, `codyssey-web:1.0` 이미지, 호스트 8083번과 컨테이너 80번의 매핑 정보가 출력되었습니다.
 
 이어서 다음 명령어로 서비스를 실행했습니다.
 
@@ -606,7 +608,7 @@ Container workstation-web-1 Started
 
 `docker compose ps`에서도 컨테이너가 `Up` 상태이고 `8083:80` 포트 매핑이 적용된 것을 확인했습니다.
 
-**결과**: 초기 설정 읽기 오류의 정확한 원인은 불명이지만, 파일을 작성·저장한 뒤 설정 해석과 컨테이너 실행이 정상적으로 완료되었습니다.
+**결과**: 초기 설정 읽기 오류의 원인은 파일이 저장되지 않았기 때문이었고, 파일을 저장한 뒤 설정 해석과 컨테이너 실행이 정상적으로 완료되었습니다.
 
 **증빙 자료**
 
